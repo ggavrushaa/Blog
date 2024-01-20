@@ -23,7 +23,13 @@
                 <x-input name="tag" value="{{ request('tag') }}" placeholder="{{ __('Тег') }}" />
             </div>
         </div>
-
+      
+        <div class="col-12 col-md-4">
+            <div class="mb-3">
+                <x-input name="count" value="{{ request('count') }}" placeholder="{{ __('Номер поста') }}" />
+            </div>
+        </div>
+        
         <div class="col-12 col-md-4">
             <div class="mb-3">
                 <x-button type="submit" class="w-100">

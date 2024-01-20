@@ -15,13 +15,13 @@
 
     <x-form-item>
         <x-label required>{{ __('Дата публикации') }}</x-label>
-        <x-input name="published_at" value="{{ $post?->published_at?->format('d.m.Y') ?? '' }}" placeholder="dd.mm.yyyy" />
+        <x-input name="published_at" placeholder="dd.mm.yyyy"/>
         <x-error name="published_at" />
     </x-form-item>
 
     <x-form-item>
-        <x-checkbox name="published" :checked="$post?->published">
-            Опубликовано
+        <x-checkbox name="published">
+            {{__('Опубликовано')}}
         </x-checkbox>
     </x-form-item>
 

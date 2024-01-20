@@ -7,5 +7,6 @@
         {{ __('Мои донаты') }}
     </x-title>
 
+    
     @include('user.donates.stats')
 @endsection

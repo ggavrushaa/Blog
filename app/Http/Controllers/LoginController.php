@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 use Illuminate\Http\Request;
 
@@ -8,23 +12,24 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
-        // dd(session()->all());
-        // $foo = session('foo');
-        // dd($foo);
-
         return view('login.index');
     }
 
     public function store(Request $request)
-    {
-        // authenticate user
-
-        alert(__('Добро пожаловать!'));
-
-        // if (true) {
-            // return redirect()->back()->withInput();
-        // }
-
-        return redirect()->route('user');
+    {  
+               $credentials = $request->validate([
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ]);
+     
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->intended('user');
+            }
+     
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])->onlyInput('email');
+        
     }
 }

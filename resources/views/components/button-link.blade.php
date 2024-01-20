@@ -1,4 +1,4 @@
-<a {{ $attributes }}>
+<a {{ $attributes }} >
     <x-button size="sm">
         {{ $slot }}
     </x-button>
